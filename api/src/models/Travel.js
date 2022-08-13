@@ -3,16 +3,21 @@ const { DataTypes } = require('sequelize');
 module.exports = sequelize => {
     sequelize.define('travel', {
         name: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            unique: true,
+            allowNull: false
         },
         dificultad: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            defaultValue: 5
         },
-        duration: {
-            type: DataTypes.STRING
+        duracion: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         temporada: {
-            type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno', 'Primavera')
+            type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno', 'Primavera'),
+            allowNull: false
         }
     });
 }
