@@ -4,16 +4,10 @@ const { findCountries } = require('../functios');
 const CountryController = {
     /**obtener todos o cargar la base de datos */
     getAll: async (req, res) => {
-        let { name } = req.query, condicion;
+        let { name } = req.query;
+        let condicion = { attributes: ['code', 'name', 'image', 'continente'] };
+        condicion.where = name ? { name: { [Op.iLike]: `%${name}%` } } : {};
         /**si tenemos el query name se tiene que buscar por el valor proporcionado */
-        if (name) {
-            condicion = {
-                attributes: ['code', 'name', 'image', 'continente'],
-                where: { name: { [Op.iLike]: `%${name}%` } }
-            }
-        } else {
-            condicion = { attributes: ['code', 'name', 'image', 'continente'] }
-        }
         try {
             let countries = await Country.findAll(condicion);
             if (countries.length === 0 && name) {
