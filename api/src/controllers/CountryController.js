@@ -1,11 +1,12 @@
 const { Country, Travel, Op } = require('../db');
-const { findCountries } = require('../functios');
 
 const CountryController = {
     /**obtener todos o cargar la base de datos */
     getAll: async (req, res) => {
         let { name } = req.query;
-        let condicion = { attributes: ['code', 'name', 'image', 'continente'] };
+        let condicion = {
+            include: [Travel]
+        };
         condicion.where = name ? { name: { [Op.iLike]: `%${name}%` } } : {};
         /**si tenemos el query name se tiene que buscar por el valor proporcionado */
         try {
@@ -16,6 +17,19 @@ const CountryController = {
             res.status(200).json(countries);
         } catch (error) {
             res.status(500).json({ error: error.message })
+        }
+    },
+    /**obtener los continentes*/
+    getContinents: async (req, res) => {
+        try {
+            let continents = [];
+            let findedContinents = await Country.findAll({ attributes: ['continente'], group: 'continente' });
+            findedContinents.forEach(conti => {
+                continents.push(conti.continente)
+            });
+            res.status(200).json(continents);
+        } catch (error) {
+            console.log(error);
         }
     },
     /**encontrar uno en la base de datos */
@@ -30,6 +44,23 @@ const CountryController = {
             }
         } catch (error) {
             res.json({ error: error.message })
+        }
+    },
+    /**filtrado */
+    filterAndOrder: async (req, res) => {
+        let { continent, travel, tyOrder, orderBy } = req.query;
+        if (!tyOrder || tyOrder === '') tyOrder = 'ASC';
+        if (!orderBy || orderBy === '') orderBy = 'name';
+        let condicion = {
+            where: continent ? { continente: continent } : {},
+            order: [[orderBy, tyOrder]]
+        }
+        if (travel && travel !== '') condicion.include = { model: Travel, where: { name: travel } };
+        try {
+            let resp = await Country.findAll(condicion)
+            res.status(200).json(resp);
+        } catch (error) {
+            res.json({ error: error.message });
         }
     }
 }

@@ -1,0 +1,57 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+.countryDetails {
+    padding: 3rem 0 1rem 0;
+    .caratula {
+        text-align: center;
+        align-items: center;
+        h2 {
+            margin: 0;
+        }
+    }
+    .details {
+        display: flex;
+        justify-content: space-between;
+        gap: 3rem;
+        text-align: center;
+        h3 {
+            margin: 0 0 3rem 0;
+            padding: 0;
+            border-bottom: 1px solid v.$blanco;
+        }
+        .dataCountry {
+            width: 100%;
+            padding: 2rem 0;
+            .detail {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 2rem;
+                font-weight: bold;
+                border-bottom: 1px dotted v.$amrillo;
+                span {
+                    color: v.$amrillo;
+                }
+                p {
+                    font-size: 2rem;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+            .bandera {
+                margin: 2rem 0 0 0;
+                height: 25rem;
+                width: 100%;
+                img {
+                    border-radius: 2rem;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+        .travels {
+            padding: 2rem 0;
+            width: 100%;
+        }
+    }
+}

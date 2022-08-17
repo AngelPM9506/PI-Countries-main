@@ -9,7 +9,14 @@ module.exports = sequelize => {
         },
         dificultad: {
             type: DataTypes.INTEGER,
-            defaultValue: 5
+            defaultValue: 5,
+            validate: {
+                min: 1,
+                max: 5
+            },
+            set(value){
+                this.setDataValue('dificultad', parseInt(value));
+            }
         },
         duracion: {
             type: DataTypes.STRING,

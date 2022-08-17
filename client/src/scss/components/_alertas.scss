@@ -1,0 +1,22 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.alerta{
+    text-align: center;
+    font-size: 2.5rem;
+    border-bottom: 2px solid;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    &.rojo{
+        background-color: rgba(v.$rojo, 0.2);
+        color: v.$rojo;
+    }
+    &.verde{
+        background-color: rgba(v.$verde, 0.2);
+        color: v.$verde;
+    }
+    &.amarillo{
+        background-color: rgba(v.$amrillo, 0.2);
+        color: v.$amrillo;
+    }
+}

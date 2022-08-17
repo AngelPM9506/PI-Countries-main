@@ -1,0 +1,6 @@
+export const GET_COUNTRIES = 'GET_COUNTRIES';
+export const GET_TRAVELS = 'GET_TRAVELS';
+export const SORT_COUNTRIES = 'SORT_COUNTRIES';
+export const GTE_DETAIL_COUNTRY = 'GTE_DETAIL_COUNTRY';
+export const GET_CONTINENTS = 'GET_CONTINENTS';
+// export const GET_CODES = 'GET_CODES';

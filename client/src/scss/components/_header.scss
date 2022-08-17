@@ -1,0 +1,40 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+header {
+    border-bottom: 0.2rem solid v.$amrillo;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    .log {
+        a {
+            display: flex;
+            align-items: center;
+            picture {
+                height: 5rem;
+                margin: 1.5rem;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            h2 {
+                font-style: italic;
+                border-bottom: 0.5rem solid v.$blanco;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+    .nav {
+        nav {
+            display: flex;
+            .btn {
+                @include m.boton(v.$gris_translucido, v.$blanco);
+                font-style: italic;
+                margin: 0 0.5rem;
+            }
+        }
+    }
+}
