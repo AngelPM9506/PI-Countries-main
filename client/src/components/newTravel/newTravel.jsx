@@ -80,7 +80,7 @@ class NewTravel extends Component {
             input: {
                 ...this.state.input,
                 codes: [
-                    ...this.state.input.codes.filter(code => code.code !== id)
+                    ...this.state.input.codes.filter(code => code !== id)
                 ],
                 completCodes: [
                     ...this.state.input.completCodes.filter(code => code.code !== id)
@@ -104,13 +104,6 @@ class NewTravel extends Component {
                         messages: responces.data.map(responce => {
                             return { estado: responce.status, respuesta: responce.message }
                         })
-                    });
-                    this.setState({
-                        input: {
-                            ...this.state.input,
-                            codes: [],
-                            completCodes: []
-                        }
                     });
                 }, error => {
                     console.log(error);

@@ -3,26 +3,30 @@
 
 .newTravel {
     padding: 3rem 0 0 0;
-    h2{
+    h2 {
         text-align: center;
     }
     .contenido {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
         align-items: center;
-        justify-content: space-evenly;
-        .alertaEstatus {
-            border-radius: 1rem;
-            padding: 1.5reem;
-            text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            &.success {
-                color: darken(v.$verde, 35%);
-                background-color: lighten(rgba(v.$verde, 0.5), 35%);
-            }
-            &.error {
-                color: darken(v.$rojo, 35%);
-                background-color: lighten(rgba(v.$rojo, 0.5), 35%);
+        .estados {
+            padding: 2rem;
+            .alertaEstatus {
+                border-radius: 1rem;
+                padding: 1rem;
+                text-align: center;
+                font-size: 2rem;
+                font-weight: bold;
+                &.success {
+                    color: darken(v.$verde, 35%);
+                    background-color: lighten(rgba(v.$verde, 0.5), 35%);
+                }
+                &.error {
+                    color: darken(v.$rojo, 35%);
+                    background-color: lighten(rgba(v.$rojo, 0.5), 35%);
+                }
             }
         }
         .formulario {
@@ -30,6 +34,7 @@
             padding: 5rem 3rem;
             margin: 1rem auto;
             background-color: v.$gris_translucido;
+            text-align: center;
             .campo {
                 align-items: center;
                 color: v.$blanco;
@@ -38,7 +43,7 @@
                 margin: 2rem 0;
                 label {
                     text-align: right;
-                    width: 15%;
+                    width: 30%;
                     margin-right: 1rem;
                 }
                 .input {
@@ -77,19 +82,23 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                p {
-                    margin: 0 1rem;
-                    span{
-                        color: v.$amrillo;
+                .datos {
+                    display: flex;
+                    p {
+                        margin: 0 1rem;
+                        span {
+                            color: v.$amrillo;
+                            border-bottom: 1px solid v.$amrillo;
+                        }
                     }
                 }
-                .botonEliminar{
+                .botonEliminar {
                     background-color: rgba(v.$rojo, 0.5);
                     border-radius: 1rem;
                     padding: 0.5rem 1rem;
                     margin: 0.5rem;
                     transition-duration: 0.3s;
-                    &:hover{
+                    &:hover {
                         background-color: darken(rgba(v.$rojo, 0.5), 15%);
                         cursor: pointer;
                     }
