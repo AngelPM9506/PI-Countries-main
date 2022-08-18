@@ -1,4 +1,11 @@
-import { GET_CONTINENTS, GET_COUNTRIES, GET_TRAVELS, GTE_DETAIL_COUNTRY, SORT_COUNTRIES } from '../actions/TypeActions';
+import {
+    GET_CONTINENTS,
+    GET_COUNTRIES,
+    GET_TRAVELS,
+    GTE_DETAIL_COUNTRY,
+    SEARCH_BY_NAME,
+    SORT_COUNTRIES
+} from '../actions/TypeActions';
 
 const initState = {
     loadedCountries: [],
@@ -38,7 +45,14 @@ const reducer = (state = initState, action) => {
             return ({
                 ...state,
                 loadedCountries: payload,
-                codes: payload.map(country => ({ code: country.code, name: country.name })),
+                //codes: payload.map(country => ({ code: country.code, name: country.name })),
+                nCountries: payload.length
+            })
+        case SEARCH_BY_NAME:
+            return ({
+                ...state,
+                loadedCountries: payload,
+                //codes: payload.map(country => ({ code: country.code, name: country.name })),
                 nCountries: payload.length
             })
         default:

@@ -38,7 +38,7 @@
     }
     .countries {
         @include m.tablet {
-            margin-top: 5rem;
+            margin-top: 4rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;

@@ -1,7 +1,14 @@
 import axios from 'axios';
-import { GET_CONTINENTS, GET_COUNTRIES, GET_TRAVELS, GTE_DETAIL_COUNTRY, SORT_COUNTRIES } from './TypeActions';
+import {
+    GET_CONTINENTS,
+    GET_COUNTRIES,
+    GET_TRAVELS,
+    GTE_DETAIL_COUNTRY,
+    SORT_COUNTRIES,
+    SEARCH_BY_NAME
+} from './TypeActions';
 
-const hostpet = 'http://192.168.0.10:3001';
+const hostpet = 'http://192.168.0.7:3001';
 
 export function getCountries() {
     return function (dispatch) {
@@ -50,6 +57,15 @@ export function sortCountries(filtByContinent, filtByTravel, ordAscDesc, ordBy) 
             .then(json => {
                 dispatch({ type: SORT_COUNTRIES, payload: json.data });
             });
+    }
+}
+
+export function searchByName(name) {
+    return function (dispatch) {
+        return axios.get(hostpet + `/countries?name=${name}`)
+            .then(json => {
+                dispatch({ type: SEARCH_BY_NAME, payload: json.data })
+            }, error => console.log(error));
     }
 }
 

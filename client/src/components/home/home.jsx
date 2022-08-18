@@ -18,15 +18,12 @@ class Home extends Component {
             maximo: 0
         }
     }
-    componentWillMount() {
-        this.changeMaximo();
-    }
     componentDidMount() {
         if (!this.body.classList.contains('count')) this.body.classList.add('count');
-        if (this.props.loadedCountries.length === 0) this.props.getCountries().then(()=>this.changeMaximo());
+        if (this.props.loadedCountries.length === 0) this.props.getCountries().then(() => this.changeMaximo());
         this.props.getTrevels();
         this.props.getContinents();
-        //this.setState({ maximo: Math.ceil(this.props.nCountries / this.state.porPagina) })
+        this.changePorPagina()
     }
     changeMaximo = () => {
         this.setState({ maximo: Math.ceil(this.props.nCountries / this.state.porPagina) });
@@ -43,6 +40,9 @@ class Home extends Component {
                     () => this.changePorPagina()
                 );
             });
+    }
+    retunFirstPage = () => {
+        this.setState({ pagina: 1 });
     }
     changePorPagina = () => {
         if (this.state.pagina === 1) {
@@ -139,6 +139,8 @@ class Home extends Component {
                     toLeft={this.toLeft}
                     toPage={this.toPage}
                     goPage={this.goPage}
+                    retunFirstPage={this.retunFirstPage}
+                    changeMaximo={this.changeMaximo}
                 />
                 <section className="countries">
                     {loadedCountries && loadedCountries.slice((pagina - 1) * porPagina, (pagina - 1) * porPagina + porPagina).map((country, i) => {

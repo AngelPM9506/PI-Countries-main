@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Buscador from "../buscador/buscador";
 
 
 class Pagination extends Component {
@@ -36,6 +37,10 @@ class Pagination extends Component {
                     <p>/</p>
                     <span>{this.props.maximo}</span>
                 </div>
+                <Buscador
+                    retunFirstPage={this.props.retunFirstPage}
+                    changeMaximo={this.props.changeMaximo}
+                />
                 <div className="arrowContent" onClick={() => this.props.toRight()}>
                     <svg width="18px" height="17px" viewBox="-1 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                         <g>

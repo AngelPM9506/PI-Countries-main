@@ -21,7 +21,6 @@ class NavBar extends Component {
                     </NavLink>
                 </div>
                 <div className="nav">
-                    {/* <Buscador /> */}
                     <nav>
                         <NavLink className="btn" to="/countries/nueva-actividad">Nueva Actividad Turistica</NavLink>
                     </nav>

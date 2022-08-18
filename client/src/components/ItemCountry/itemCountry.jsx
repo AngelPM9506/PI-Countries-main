@@ -2,9 +2,6 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 
 class ItemCountry extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         let { name, continente, image, code } = this.props;
         return (
