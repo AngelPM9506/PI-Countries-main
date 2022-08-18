@@ -38,8 +38,10 @@
     }
     .countries {
         @include m.tablet {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            margin-top: 5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
         }
     }

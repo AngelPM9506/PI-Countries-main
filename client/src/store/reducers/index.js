@@ -5,7 +5,8 @@ const initState = {
     continents: [],
     loadedTravels: [],
     detailCountry: {},
-    codes: []
+    codes: [],
+    nCountries: 0
 }
 
 const reducer = (state = initState, action) => {
@@ -15,7 +16,8 @@ const reducer = (state = initState, action) => {
             return ({
                 ...state,
                 loadedCountries: payload,
-                codes: payload.map(country => ({ code: country.code, name: country.name }))
+                codes: payload.map(country => ({ code: country.code, name: country.name })),
+                nCountries: payload.length
             })
         case GTE_DETAIL_COUNTRY:
             return ({
@@ -35,7 +37,9 @@ const reducer = (state = initState, action) => {
         case SORT_COUNTRIES:
             return ({
                 ...state,
-                loadedCountries: payload
+                loadedCountries: payload,
+                codes: payload.map(country => ({ code: country.code, name: country.name })),
+                nCountries: payload.length
             })
         default:
             return state

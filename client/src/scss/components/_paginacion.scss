@@ -1,0 +1,119 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+$ease: cubic-bezier(0.2, 1, 0.3, 1);
+.paginacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: v.$blanco;
+    border-bottom: 2px double v.$blanco;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    .formulario {
+        input:not([Type="submit"]) {
+            background: rgba(v.$blanco, 0.01);
+            border: none;
+            border-radius: 1rem;
+            color: v.$blanco;
+            font-size: 2rem;
+            padding: 1rem;
+            margin: 0 1rem;
+            transition-property: all;
+            transition-duration: 0.4s;
+            &:focus {
+                outline: none;
+                background: rgba(v.$blanco, 0.1);
+                box-shadow: 0rem 0rem 0.25rem 0.3rem rgba(v.$blanco, 0.2);
+            }
+            &:hover {
+                background: rgba(v.$blanco, 0.1);
+                box-shadow: 0rem 0rem 0.25rem 0.3rem rgba(v.$blanco, 0.2);
+            }
+        }
+        input[Type="submit"] {
+            background: none;
+            border: none;
+            border-radius: 1rem;
+            padding: 0.5rem 1rem;
+            color: transparent;
+            font-size: 2rem;
+            transition-property: all;
+            transition-duration: 0.4s;
+            &:hover {
+                color: v.$blanco;
+                background: rgba(v.$blanco, 0.1);
+                box-shadow: 0rem 0rem 0.25rem 0.3rem rgba(v.$blanco, 0.2);
+            }
+        }
+    }
+    .numerador {
+        display: flex;
+        align-items: center;
+        font-size: 2rem;
+        p {
+            margin: 0 0.25rem;
+        }
+        span {
+            margin: 0 0.25rem;
+        }
+    }
+    .arrowContent {
+        border: none;
+        cursor: pointer;
+        svg {
+            fill: v.$blanco;
+            width: 4rem;
+            height: 4rem;
+            margin: 0 2rem;
+            overflow: visible;
+            polygon,
+            path {
+                transition: all 0.5s $ease;
+            }
+            .arrow {
+                animation: arrow-anim 2.5s $ease infinite;
+            }
+            .arrow-fixed {
+                animation: arrow-fixed-anim 2.5s $ease infinite;
+            }
+
+            &:hover polygon,
+            &:hover path {
+                transition: all 1s $ease;
+                fill: v.$amrillo;
+            }
+            &:hover .arrow {
+                animation: arrow-anim 2.5s $ease infinite;
+            }
+            &:hover .arrow-fixed {
+                animation: arrow-fixed-anim 2.5s $ease infinite;
+            }
+        }
+    }
+}
+
+@keyframes arrow-anim {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    5% {
+        transform: translateX(-0.1rem);
+    }
+    100% {
+        transform: translateX(1rem);
+        opacity: 0;
+    }
+}
+
+@keyframes arrow-fixed-anim {
+    5% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
+}

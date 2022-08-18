@@ -23,7 +23,7 @@ class NavBar extends Component {
                 <div className="nav">
                     {/* <Buscador /> */}
                     <nav>
-                        <NavLink className="btn" to="/countries/nueva/actividad">Nueva Actividad Turistica</NavLink>
+                        <NavLink className="btn" to="/countries/nueva-actividad">Nueva Actividad Turistica</NavLink>
                     </nav>
                 </div>
             </header>

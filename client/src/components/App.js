@@ -12,8 +12,8 @@ function App() {
     <Route exact path="/" component={Landing} />
       <Route path="/countries" component={NavBar} />
       <Route exact path="/countries" component={Home} />
-      <Route exact path="/countries/:code" component={Country} />
-      <Route exact path="/countries/nueva/actividad" component={newTravel} />
+      <Route exact path="/countries/:code/:continenete" component={Country} />
+      <Route exact path="/countries/nueva-actividad/" component={newTravel} />
     </Fragment>
   );
 }

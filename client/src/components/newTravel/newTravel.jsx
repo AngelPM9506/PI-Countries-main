@@ -84,7 +84,7 @@ class NewTravel extends Component {
         return (
             <main className="contenedor newTravel">
                 <h2>Crear y/o agregar Nueva actividad turistica</h2>
-                <p className={'alertaEstatus' + ' ' + estado}>{estado === 'success' ? `Exito al crear: ${respuesta}` : respuesta}</p>
+                <p className={`alertaEstatus ${estado}`}>{estado === 'success' ? `Exito al crear: ${respuesta}` : respuesta}</p>
                 <form className="formulario" onSubmit={e => this.senNewTravel(e)}>
                     <h3>Coloca los datos de la nueva actividad</h3>
                     <div className="campo">
