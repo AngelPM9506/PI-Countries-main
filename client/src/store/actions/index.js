@@ -65,8 +65,9 @@ export function searchByName(name) {
     return function (dispatch) {
         return axios.get(hostpet + `/countries?name=${name}`)
             .then(json => {
-                dispatch({ type: SEARCH_BY_NAME, payload: json.data })
-            }, error => console.log(error));
+                dispatch({ type: SEARCH_BY_NAME, payload: json.data });
+                return json;
+            }, error =>  error.response);
     }
 }
 

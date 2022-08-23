@@ -119,7 +119,7 @@ class NewTravel extends Component {
                     });
                     setTimeout(() => {
                         this.props.history.push('/countries'); /**existe el useHystory en los hooks */
-                    }, 2000);
+                    }, 1000);
                 }, error => {
                     console.log(error);
                 });

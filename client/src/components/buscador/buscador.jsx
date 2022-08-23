@@ -15,10 +15,14 @@ class Buscador extends Component {
     search = (event) => {
         event.preventDefault();
         this.props.searchByName(this.state.toSearch)
-        .then(()=>{
-            this.props.retunFirstPage()
-            this.props.changeMaximo();
-        });
+            .then( resp => {
+                if (resp.status === 200) {
+                    this.props.retunFirstPage()
+                    this.props.changeMaximo();
+                }else{
+                    alert(resp.data.message)
+                }
+            });
     }
     render() {
         return (
