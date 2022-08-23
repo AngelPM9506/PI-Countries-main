@@ -5,7 +5,8 @@ const CountryController = {
     getAll: async (req, res) => {
         let { name } = req.query;
         let condicion = {
-            include: [Travel]
+            include: [Travel],
+            order: [['name', 'ASC']]
         };
         condicion.where = name ? { name: { [Op.iLike]: `%${name}%` } } : {};
         /**si tenemos el query name se tiene que buscar por el valor proporcionado */

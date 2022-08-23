@@ -5,7 +5,8 @@ import {
     GET_TRAVELS,
     GTE_DETAIL_COUNTRY,
     SORT_COUNTRIES,
-    SEARCH_BY_NAME
+    SEARCH_BY_NAME,
+    CLEAR_DETAILS
 } from './TypeActions';
 
 const hostpet = 'http://192.168.0.7:3001';
@@ -67,6 +68,10 @@ export function searchByName(name) {
                 dispatch({ type: SEARCH_BY_NAME, payload: json.data })
             }, error => console.log(error));
     }
+}
+
+export function clearDetails() {
+    return ({ type: CLEAR_DETAILS, payload: {} })
 }
 
 // export function getCodes(){

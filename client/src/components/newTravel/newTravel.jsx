@@ -50,23 +50,35 @@ class NewTravel extends Component {
     /**Verificar que nose tengan errores */
     setChengeInput = (e) => {
         if (e.target.name === 'code') {
-            this.setState({
-                input: {
-                    ...this.state.input,
-                    codes: [...this.state.input.codes, e.target.value],
-                    completCodes: [
-                        ...this.state.input.completCodes,
-                        ...this.props.codes.filter(code => code.code === e.target.value)]
-                }
-            });
+            if (!this.state.input.codes.includes(e.target.value)) {
+                this.setState({
+                    input: {
+                        ...this.state.input,
+                        codes: [...this.state.input.codes, e.target.value],
+                        completCodes: [
+                            ...this.state.input.completCodes,
+                            ...this.props.codes.filter(code => code.code === e.target.value)]
+                    }
+                });
+            }
         } else {
-            this.setState({
-                input: {
-                    ...this.state.input,
-                    [e.target.name]: e.target.value
-                }
-            });
+            if (typeof (e.target.value) === 'string') {
+                this.setState({
+                    input: {
+                        ...this.state.input,
+                        [e.target.name]: e.target.value.trim()
+                    }
+                });
+            } else {
+                this.setState({
+                    input: {
+                        ...this.state.input,
+                        [e.target.name]: e.target.value
+                    }
+                });
+            }
         }
+
         this.setState({
             error: this.validateCampo({
                 ...this.state.input,
@@ -105,6 +117,9 @@ class NewTravel extends Component {
                             return { estado: responce.status, respuesta: responce.message }
                         })
                     });
+                    setTimeout(() => {
+                        this.props.history.push('/countries'); /**existe el useHystory en los hooks */
+                    }, 2000);
                 }, error => {
                     console.log(error);
                 });
@@ -169,7 +184,11 @@ class NewTravel extends Component {
                             <div className="campo">
                                 <label htmlFor="code">Pais:</label>
                                 <div className="input">
-                                    <select name="code" id="code" onChange={this.setChengeInput}>
+                                    <select
+                                        name="code"
+                                        id="code"
+                                        onClick={this.setChengeInput}
+                                    >
                                         <option value="">--Selecciona la temporada---</option>
                                         {this.props.codes && this.props.codes.map((code, i) => {
                                             return (
@@ -177,7 +196,7 @@ class NewTravel extends Component {
                                             )
                                         })}
                                     </select>
-                                    <p>{ this.state.input.codes.length === 0 && this.state.error.code}</p>
+                                    <p>{this.state.input.codes.length === 0 && this.state.error.code}</p>
                                 </div>
                             </div>
                             <div className="botones" >

@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { getDetailsCountry } from '../../store/actions'
+import { getDetailsCountry, clearDetails } from '../../store/actions'
 import Travel from "../travel/travel";
 
 class Country extends Component {
@@ -12,6 +12,9 @@ class Country extends Component {
         if (!this.body.classList.contains('count')) this.body.classList.add('count');
         const { match: { params: { code } } } = this.props;
         this.props.getDetailsCountry(code);
+    }
+    componentWillUnmount(){
+        this.props.clearDetails();
     }
     render() {
         var {
@@ -85,7 +88,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
     return {
-        getDetailsCountry: code => dispatch(getDetailsCountry(code))
+        getDetailsCountry: code => dispatch(getDetailsCountry(code)),
+        clearDetails: () => dispatch(clearDetails())
     }
 }
 export default connect(mapState, mapDispatch)(Country);

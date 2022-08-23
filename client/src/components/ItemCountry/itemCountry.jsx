@@ -9,14 +9,14 @@ class ItemCountry extends Component {
                 <div className="itemCountry">
                     <Link to={`/countries/${code}/${continente}`}>
                         <h3>{name}</h3>
+                        <div className="bandera">
+                            <picture>
+                                <source srcSet={image[1]} />
+                                <img src={image[0]} alt="Bandera" />
+                            </picture>
+                        </div>
                         <span>{continente}</span>
                     </Link>
-                    <div className="bandera">
-                        <picture>
-                            <source srcSet={image[1]} />
-                            <img src={image[0]} alt="Bandera" />
-                        </picture>
-                    </div>
                 </div>
             </article>
         );

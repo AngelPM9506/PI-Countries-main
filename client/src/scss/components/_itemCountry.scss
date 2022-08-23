@@ -2,21 +2,21 @@
 @use "../base/mixins" as m;
 
 .containerItem {
-    flex: 1 1 1;
     .itemCountry {
         background-color: v.$gris_translucido;
         border-radius: 3rem;
         box-shadow: 0px 0px 17px 5px rgba(v.$blanco, 0.2);
         margin: 0.5rem auto;
-        padding: 2rem;
+        padding: 1rem;
         text-align: center;
-        height: max-content;
-        width: max-content;
+        height: min-content;
+        width: min-content;
         a {
             color: v.$blanco;
             h3 {
-                font-size: 2.5rem;
+                font-size: 2.25rem;
                 margin: 0.5rem 0;
+                width: 25rem;
             }
         }
         .bandera {

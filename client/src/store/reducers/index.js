@@ -1,4 +1,5 @@
 import {
+    CLEAR_DETAILS,
     GET_CONTINENTS,
     GET_COUNTRIES,
     GET_TRAVELS,
@@ -54,6 +55,11 @@ const reducer = (state = initState, action) => {
                 loadedCountries: payload,
                 //codes: payload.map(country => ({ code: country.code, name: country.name })),
                 nCountries: payload.length
+            })
+        case CLEAR_DETAILS:
+            return ({
+                ...state,
+                detailCountry: payload
             })
         default:
             return state

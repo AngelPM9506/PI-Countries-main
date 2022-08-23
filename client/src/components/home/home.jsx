@@ -15,7 +15,8 @@ class Home extends Component {
             pagina: 1,
             porPagina: 9,
             goPage: 1,
-            maximo: 0
+            maximo: 0,
+            filtred: false
         }
     }
     componentDidMount() {
@@ -33,6 +34,7 @@ class Home extends Component {
     }
     filterCountries() {
         let { filterContinet, filterTravel, orden, ordenBy } = this.state;
+        this.setState({ filtred: true })
         this.props.sortCountries(filterContinet, filterTravel, orden, ordenBy)
             .then(() => {
                 this.setState(
@@ -117,14 +119,12 @@ class Home extends Component {
                         </div>
                         <div className="campo">
                             <select name="orden" id="orden" onChange={e => this.setFilterValue(e)}>
-                                <option value="" >--Secuencia...--</option>
                                 <option value='ASC'>Ascendente</option>
                                 <option value='DESC'>Descendente</option>
                             </select>
                         </div>
                         <div className="campo">
                             <select name="ordenBy" id="ordenBy" onChange={e => this.setFilterValue(e)}>
-                                <option value="" >--Orden...--</option>
                                 <option value='name'>Alfavetico</option>
                                 <option value='poblacion'>Poblacion</option>
                             </select>
@@ -154,6 +154,8 @@ class Home extends Component {
                             />
                         )
                     })}
+
+                    {this.state.filtred && loadedCountries.length === 0 ? <h4 className="alerta rojo">No se encontro Ningun pais con tal conbinacion de filtros</h4> : ''}
                 </section>
             </main>
         )

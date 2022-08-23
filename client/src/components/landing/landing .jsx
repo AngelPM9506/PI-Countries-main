@@ -19,7 +19,7 @@ class Landing extends Component {
     render() {
         return (
             <main className="landing">
-                <h1>PI ciudades</h1>
+                <h1>PI-Countries</h1>
                 <div className="botones">
                     <Link className="btn" to={'/countries'}>Ciudades</Link>
                 </div>
