@@ -5,7 +5,7 @@
 .containerItem .itemCountry {
     background-color: rgba(107, 114, 128, 0.3);
     border-radius: 3rem;
-    box-shadow: 0px 0px 17px 5px rgba(255,255,255, 0.2);
+    box-shadow: 0px 0px 17px 5px rgba(255, 255, 255, 0.2);
     margin: 0.5rem auto;
     padding: 1rem;
     text-align: center;
@@ -14,7 +14,7 @@
 }
 
 .containerItem .itemCountry a {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .containerItem .itemCountry a h3 {

@@ -6,9 +6,6 @@ header {
     padding: 0 3rem;
 }
 
-header .log {
-}
-
 header .log a {
     display: flex;
     align-items: center;
