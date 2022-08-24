@@ -6,12 +6,23 @@
     text-align: center;
     min-height: 100vh;
 }
-
-.landing h1 {
-    color: #59759d;
+.landing .titulo {
+    padding: 0 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     text-align: left;
-    padding-left: 10rem;
     width: 100%;
+}
+
+.landing .titulo h1 {
+    color: #59759d;
+    margin: 0;
+}
+.landing .titulo p {
+    color: #59759d;
+    margin: 0;
 }
 
 .landing .botones {

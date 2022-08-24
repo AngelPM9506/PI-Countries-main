@@ -20,10 +20,14 @@ class Landing extends Component {
     }
     render() {
         console.log(styles);
-        let {landing, botones, btn} = styles;
+        let { landing, botones, btn, titulo } = styles;
+        console.log(styles);
         return (
             <main className={landing}>
-                <h1>PI-Countries</h1>
+                <div className={titulo}>
+                    <h1>PI-Countries</h1>
+                    <p>M. Angel P.M. | Cohorte-28a SoyHenry</p>
+                </div>
                 <div className={botones}>
                     <Link className={btn} to={'/countries'}>Ciudades</Link>
                 </div>
