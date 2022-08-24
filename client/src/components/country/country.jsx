@@ -29,6 +29,12 @@ class Country extends Component {
                 <section className={details}>
                     <article className={dataCountry}>
                         <h3>Detalles</h3>
+                        <div className={bandera}>
+                            <picture>
+                                <source srcSet={image && image[1]} />
+                                <img src={image && image[0]} alt="" />
+                            </picture>
+                        </div>
                         <div className={detail}>
                             <p>Codigo: </p><span>{code && code}</span>
                         </div>
@@ -43,12 +49,6 @@ class Country extends Component {
                         </div>
                         <div className={detail}>
                             <p>Poblacion: </p><span>{poblacion && (poblacion / 1000000).toFixed(3)} Millones de personas</span>
-                        </div>
-                        <div className={bandera}>
-                            <picture>
-                                <source srcSet={image && image[1]} />
-                                <img src={image && image[0]} alt="" />
-                            </picture>
                         </div>
                     </article>
                     <article className={cssTravels}>

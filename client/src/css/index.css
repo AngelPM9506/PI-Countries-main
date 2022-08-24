@@ -466,8 +466,8 @@ p {
 }
 
 .alerta.rojo {
-  background-color: rgba(198, 0, 0, 0.2);
-  color: #c60000;
+  background-color: rgba(100, 0, 0, 0.2);
+  color: rgb(255,100,100);
 }
 .alerta.verde {
   background-color: rgba(rgb(0, 120, 0), 0.2);
