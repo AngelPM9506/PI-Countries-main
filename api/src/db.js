@@ -1,4 +1,5 @@
-const { DB_USER, DB_PASS, DB_BD, DB_HOST } = require('dotenv').config().parsed;
+require('dotenv').config();
+const { DB_USER, DB_PASS, DB_BD, DB_HOST } = process.env;
 const { Sequelize, Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
