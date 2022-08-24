@@ -1,4 +1,4 @@
-const { DB_USER, DB_PASS, DB_BD, DB_HOST, DB_PORT } = require('dotenv').config().parsed;
+const { DB_USER, DB_PASS, DB_BD, DB_HOST } = require('dotenv').config().parsed;
 const { Sequelize, Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
@@ -6,10 +6,36 @@ const path = require('path');
 //   DB_USER, DB_PASSWORD, DB_HOST,
 // } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_BD}`, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+const sequelize =
+  process.env.NODE_ENV === 'production'
+    ? new Sequelize({
+      database: DB_BD,
+      dialect: 'postgres',
+      host: DB_HOST,
+      port: 5432,
+      username: DB_USER,
+      password: DB_PASS,
+      pool: {
+        max: 3,
+        min: 1,
+        idle: 100000
+      },
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
+        },
+        keepAlive: true 
+      },
+      ssl: true
+    })
+    : new Sequelize(
+      `postgres://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_BD}`,
+      {
+        logging: false, // set to console.log to see the raw SQL queries
+        native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+      }
+    );
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -35,8 +61,8 @@ const { Country, Travel } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-Country.belongsToMany(Travel, {through: 'Country_Travel'});
-Travel.belongsToMany(Country, {through: 'Country_Travel'});
+Country.belongsToMany(Travel, { through: 'Country_Travel' });
+Travel.belongsToMany(Country, { through: 'Country_Travel' });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

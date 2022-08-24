@@ -15,7 +15,7 @@ import store from './store';
 /**configuracón env */
 dotenv.config();
 /**url default para axios */
-axios.defaults.baseURL = process.env.REACT_APP_API || 'http://192.168.0.7:3001';
+axios.defaults.baseURL = process.env.REACT_APP_API || 'http://127.0.0.1:3001';
 
   ReactDOM.render(
     <Provider store={store}>

@@ -18,14 +18,13 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn, Country } = require('./src/db.js');
+const { conn} = require('./src/db.js');
 const { findCountries } = require('./src/functios');
-const {PORT} = require('dotenv').config().parsed;
+
 // Syncing all the models at once.
-conn.sync({ force: true }).then(async function() {
-  let countries = await findCountries();
-  await Country.bulkCreate(countries);
-  server.listen(3001, () => {
-    console.log(`%s listening at http://127.0.0.1:${PORT}`); // eslint-disable-line no-console
+conn.sync({force: false}).then(async function () {
+  await findCountries();
+  server.listen(process.env.PORT, () => {
+    console.log(`%s listening at http://127.0.0.1:${process.env.PORT}`); // eslint-disable-line no-console
   });
 });
