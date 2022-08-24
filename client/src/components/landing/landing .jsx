@@ -19,9 +19,7 @@ class Landing extends Component {
         this.body.classList.add('count');
     }
     render() {
-        console.log(styles);
         let { landing, botones, btn, titulo } = styles;
-        console.log(styles);
         return (
             <main className={landing}>
                 <div className={titulo}>
