@@ -111,7 +111,7 @@ class NewTravel extends Component {
             return { name, dificultad: parseInt(dificultad), duracion, temporada, code: selected };
         })
         if (JSON.stringify(this.state.error) === '{}') {
-            axios.post('http://192.168.0.7:3001/activities', toSend)
+            axios.post('/activities', toSend)
                 .then(responces => {
                     this.setState({
                         messages: responces.data.map(responce => {
