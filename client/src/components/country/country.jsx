@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { getDetailsCountry, clearDetails } from '../../store/actions'
 import Travel from "../travel/travel";
 
+import styles from './country.module.css';
+
 class Country extends Component {
     constructor(props) {
         super(props);
@@ -13,51 +15,43 @@ class Country extends Component {
         const { match: { params: { code } } } = this.props;
         this.props.getDetailsCountry(code);
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         this.props.clearDetails();
     }
     render() {
-        var {
-            name,
-            image,
-            code,
-            capital,
-            subregion,
-            area,
-            poblacion,
-            travels
-        } = this.props.detailCountry;
+        var { name, image, code, capital, subregion, area, poblacion, travels } = this.props.detailCountry;
+        var { countryDetails, caratula, details, dataCountry, detail, bandera, cssTravels } = styles
         return (
-            <main className="contenedor countryDetails">
-                <section className="caratula">
+            <main className={'contenedor ' + countryDetails}>
+                <section className={caratula}>
                     <h2>{name && name}</h2>
                 </section>
-                <section className="details">
-                    <article className="dataCountry">
+                <section className={details}>
+                    <article className={dataCountry}>
                         <h3>Detalles</h3>
-                        <div className="detail">
+                        <div className={detail}>
                             <p>Codigo: </p><span>{code && code}</span>
                         </div>
-                        <div className="detail">
+                        <div className={detail}>
                             <p>Capital: </p><span>{capital && capital}</span>
                         </div>
-                        <div className="detail">
+                        <div className={detail}>
                             <p>Subregion: </p><span>{subregion && subregion}</span>
                         </div>
-                        <div className="detail">
+                        <div className={detail}>
                             <p>Area: </p><span>{area && (area / 1000000).toFixed(3)} Millones de km<sup>2</sup></span>
                         </div>
-                        <div className="detail">
+                        <div className={detail}>
                             <p>Poblacion: </p><span>{poblacion && (poblacion / 1000000).toFixed(3)} Millones de personas</span>
                         </div>
-                        <div className="bandera">
+                        <div className={bandera}>
                             <picture>
                                 <source srcSet={image && image[1]} />
                                 <img src={image && image[0]} alt="" />
                             </picture>
                         </div>
                     </article>
-                    <article className="travels">
+                    <article className={cssTravels}>
                         <h3>Actividades Turisticas</h3>
                         <div>
                             {

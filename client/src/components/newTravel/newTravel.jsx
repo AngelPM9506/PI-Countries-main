@@ -2,6 +2,7 @@ import axios from "axios";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { getCountries } from "../../store/actions";
+import styles from './newTravel.module.css';
 
 class NewTravel extends Component {
     constructor(props) {
@@ -29,7 +30,7 @@ class NewTravel extends Component {
     validateCampo = (input) => {
         let error = {};
         let valTemporada = ["Verano", "Otoño", "Invierno", "Primavera"];
-        let valCode = this.props.codes.map(code => code.code);
+        //let valCode = this.props.codes.map(code => code.code);
         if (!input.name) {
             error.name = 'El nombre es obligatorio';
         }
@@ -128,30 +129,36 @@ class NewTravel extends Component {
     render() {
         let { messages } = this.state;
         let { completCodes } = this.state.input
+        let { agregado, alertaEstatus, botonEliminar, campo, contenido, datos, error, success, estados, formulario, input, newTravel, paises } = styles;
         return (
-            <main className="newTravel">
+            <main className={newTravel}>
                 <h2>Crear y/o agregar Nueva actividad turistica</h2>
-                <section className="contenido">
-                    <article className="estados">
+                <section className={contenido}>
+                    <article className={estados}>
                         {messages && messages.map((message, i) => (
-                            <p key={i} className={`alertaEstatus ${message.estado}`}>{message.respuesta}</p>
+                            <p
+                                key={i}
+                                className={`${alertaEstatus} ${message.estado === 'error' ? error : success}`}
+                            >
+                                {message.respuesta}
+                            </p>
                         ))}
                     </article>
                     <article className="sectForm">
-                        <form className="formulario" onSubmit={e => this.senNewTravel(e)}>
+                        <form className={formulario} onSubmit={e => this.senNewTravel(e)}>
                             <h3>Coloca los datos de la nueva actividad</h3>
-                            <div className="campo">
+                            <div className={campo}>
                                 <label htmlFor="name">Nombre:</label>
-                                <div className="input">
+                                <div className={input}>
                                     <input type="text" name="name" id="name"
                                         placeholder="Nombre de la actividad"
                                         onChange={this.setChengeInput} />
                                     <p>{this.state.error.name}</p>
                                 </div>
                             </div>
-                            <div className="campo">
+                            <div className={campo}>
                                 <label htmlFor="dificultad">Dificultad:</label>
-                                <div className="input">
+                                <div className={input}>
                                     <input type="number" name="dificultad" id="dificultad"
                                         min="1" max="5"
                                         placeholder="Del 1 al 5 que tan dificiel es"
@@ -159,18 +166,18 @@ class NewTravel extends Component {
                                     <p>{this.state.error.dificultad}</p>
                                 </div>
                             </div>
-                            <div className="campo">
+                            <div className={campo}>
                                 <label htmlFor="duracion">Duración:</label>
-                                <div className="input">
+                                <div className={input}>
                                     <input type="text" name="duracion" id="duracion"
                                         placeholder="Cunto tiempo dura la actividad, horas, días o semanas?"
                                         onChange={this.setChengeInput} />
                                     <p>{this.state.error.duracion}</p>
                                 </div>
                             </div>
-                            <div className="campo">
+                            <div className={campo}>
                                 <label htmlFor="temporada">Temporada:</label>
-                                <div className="input">
+                                <div className={input}>
                                     <select name="temporada" id="temporada" onChange={this.setChengeInput}>
                                         <option value="">--Selecciona la temporada---</option>
                                         <option value="Verano">Verano</option>
@@ -181,12 +188,13 @@ class NewTravel extends Component {
                                     <p>{this.state.error.temporada}</p>
                                 </div>
                             </div>
-                            <div className="campo">
+                            <div className={campo}>
                                 <label htmlFor="code">Pais:</label>
-                                <div className="input">
+                                <div className={input}>
                                     <select
                                         name="code"
                                         id="code"
+                                        onChange={this.setChengeInput}
                                         onClick={this.setChengeInput}
                                     >
                                         <option value="">--Selecciona la temporada---</option>
@@ -204,16 +212,16 @@ class NewTravel extends Component {
                             </div>
                         </form>
                     </article>
-                    <article className="paises">
+                    <article className={paises}>
                         {completCodes && completCodes.map((code, i) => (
-                            <div key={i} className="agregado">
-                                <div className="datos">
+                            <div key={i} className={agregado}>
+                                <div className={datos}>
                                     <p> País: <span>{code.name}</span></p>
                                     <p> Codigo: <span>{code.code}</span></p>
                                 </div>
                                 <p
                                     id={code.code}
-                                    className="botonEliminar"
+                                    className={botonEliminar}
                                     onClick={this.deleteCodeToUpdate}>
                                     Eliminar
                                 </p>

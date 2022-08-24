@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getCountries, getTrevels, getContinents, sortCountries } from "../../store/actions";
 import ItemCountry from "../ItemCountry/itemCountry";
 import Pagination from "../paginacion/paginacion";
+import  styles from './home.module.css';
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -92,12 +93,13 @@ class Home extends Component {
     render() {
         let { pagina, porPagina } = this.state;
         let { loadedCountries } = this.props
+        let {home, campo, countries, encabezado, filtros} = styles;
         return (
-            <main className="contenedor home">
-                <section className="encabezado">
+            <main className={"contenedor " + home}>
+                <section className={encabezado}>
                     <h1>{this.props.nCountries} Paises</h1>
-                    <article className="filtros">
-                        <div className="campo">
+                    <article className={filtros}>
+                        <div className={campo}>
                             <select name="filterContinet" id="filterContinet" onChange={e => this.setFilterValue(e)}>
                                 <option value="" >--Por Continent--</option>
                                 {this.props.continents.length > 0 && this.props.continents.map((continente, i) => {
@@ -107,7 +109,7 @@ class Home extends Component {
                                 })}
                             </select>
                         </div>
-                        <div className="campo">
+                        <div className={campo}>
                             <select name="filterTravel" id="filterTravel" onChange={e => this.setFilterValue(e)}>
                                 <option value="" >--Por Actividad--</option>
                                 {this.props.loadedTravels && this.props.loadedTravels.map((travel, i) => {
@@ -117,13 +119,13 @@ class Home extends Component {
                                 })}
                             </select>
                         </div>
-                        <div className="campo">
+                        <div className={campo}>
                             <select name="orden" id="orden" onChange={e => this.setFilterValue(e)}>
                                 <option value='ASC'>Ascendente</option>
                                 <option value='DESC'>Descendente</option>
                             </select>
                         </div>
-                        <div className="campo">
+                        <div className={campo}>
                             <select name="ordenBy" id="ordenBy" onChange={e => this.setFilterValue(e)}>
                                 <option value='name'>Alfavetico</option>
                                 <option value='poblacion'>Poblacion</option>
@@ -142,7 +144,7 @@ class Home extends Component {
                     retunFirstPage={this.retunFirstPage}
                     changeMaximo={this.changeMaximo}
                 />
-                <section className="countries">
+                <section className={countries}>
                     {loadedCountries && loadedCountries.slice((pagina - 1) * porPagina, (pagina - 1) * porPagina + porPagina).map((country, i) => {
                         return (
                             <ItemCountry

@@ -1,0 +1,55 @@
+.countryDetails {
+    padding: 3rem 0 1rem 0;
+}
+.countryDetails .caratula {
+    text-align: center;
+    align-items: center;
+}
+.countryDetails .caratula h2 {
+    margin: 0;
+}
+.countryDetails .details {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    text-align: center;
+}
+.countryDetails .details h3 {
+    margin: 0 0 3rem 0;
+    padding: 0;
+    border-bottom: 1px solid #fff;
+}
+.countryDetails .details .dataCountry {
+    width: 100%;
+    padding: 2rem 0;
+}
+.countryDetails .details .dataCountry .detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom: 1px dotted #ff0;
+}
+.countryDetails .details .dataCountry .detail span {
+    color: #ff0;
+}
+.countryDetails .details .dataCountry .detail p {
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+}
+.countryDetails .details .dataCountry .bandera {
+    margin: 2rem 0 0 0;
+    height: 25rem;
+    width: 100%;
+}
+.countryDetails .details .dataCountry .bandera img {
+    border-radius: 2rem;
+    height: 100%;
+    width: 100%;
+}
+.countryDetails .details .cssTravels {
+    padding: 2rem 0;
+    width: 100%;
+}

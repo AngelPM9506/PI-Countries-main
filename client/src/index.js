@@ -1,22 +1,30 @@
+/**repos */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import axios from 'axios';
+import dotenv from 'dotenv';
+/**estilos universales */
 //import './scss/variables.scss';
-import './scss/variables.scss'
+import './css/index.css';
+/**componenetes */
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
-
-import { Provider } from 'react-redux';
 import store from './store';
+/**configuracón env */
+dotenv.config();
+/**url default para axios */
+axios.defaults.baseURL = process.env.REACT_APP_API || 'http://192.168.0.7:3001';
 
-ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById('root')
-);
+  ReactDOM.render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>,
+    document.getElementById('root')
+  );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

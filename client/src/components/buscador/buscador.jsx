@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { searchByName } from "../../store/actions";
+import styles from './buscador.module.css';
 
 class Buscador extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class Buscador extends Component {
     }
     render() {
         return (
-            <form className="buscador" onSubmit={this.search}>
+            <form className={styles.buscador} onSubmit={this.search}>
                 <input type="text" name="search" id="buscar"
                     onChange={this.inputSearch}
                     placeholder="Busca un pais" />

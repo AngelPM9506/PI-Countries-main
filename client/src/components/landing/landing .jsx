@@ -2,6 +2,8 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { getCountries } from "../../store/actions";
 import { Link } from "react-router-dom";
+import styles from './landing.module.css';
+
 class Landing extends Component {
     constructor(props) {
         super(props);
@@ -17,11 +19,13 @@ class Landing extends Component {
         this.body.classList.add('count');
     }
     render() {
+        console.log(styles);
+        let {landing, botones, btn} = styles;
         return (
-            <main className="landing">
+            <main className={landing}>
                 <h1>PI-Countries</h1>
-                <div className="botones">
-                    <Link className="btn" to={'/countries'}>Ciudades</Link>
+                <div className={botones}>
+                    <Link className={btn} to={'/countries'}>Ciudades</Link>
                 </div>
             </main>
         )

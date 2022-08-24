@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { NavLink } from "react-router-dom";
 import logoHenry from "../../img/HenryLogo2.png"
+import styles from './navbar.module.css';
 
 class NavBar extends Component {
     constructor(props) {
@@ -10,9 +11,10 @@ class NavBar extends Component {
     componentDidMount() {
     }
     render() {
+        let{log, nav, btn} = styles
         return (
-            <header id="header">
-                <div className="log">
+            <header>
+                <div className={log}>
                     <NavLink to='/countries'>
                         <picture>
                             <img src={logoHenry} alt="Logo henrr" />
@@ -20,9 +22,9 @@ class NavBar extends Component {
                         <h2>PI-Countries</h2>
                     </NavLink>
                 </div>
-                <div className="nav">
+                <div className={nav}>
                     <nav>
-                        <NavLink className="btn" to="/countries/nueva-actividad">Nueva Actividad Turistica</NavLink>
+                        <NavLink className={btn} to="/countries/nueva-actividad">Nueva Actividad Turistica</NavLink>
                     </nav>
                 </div>
             </header>
