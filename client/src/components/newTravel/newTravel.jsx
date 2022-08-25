@@ -197,7 +197,7 @@ class NewTravel extends Component {
                                         onChange={this.setChengeInput}
                                         onClick={this.setChengeInput}
                                     >
-                                        <option value="">--Selecciona la temporada---</option>
+                                        <option value="">--Selecciona los países---</option>
                                         {this.props.codes && this.props.codes.map((code, i) => {
                                             return (
                                                 <option key={i} value={code.code} >{code.name}</option>
