@@ -18,7 +18,7 @@ export function getCountries() {
         return axios.get('/countries')
             .then(json => {
                 dispatch({ type: GET_COUNTRIES, payload: json.data });
-                dispatch({ type: LOADING_APP_CONTENT, payload: false })
+                dispatch({ type: LOADING_APP_CONTENT, payload: false });
             }, error => console.error(error))
     }
 }
@@ -34,9 +34,11 @@ export function getTrevels() {
 
 export function getDetailsCountry(code) {
     return function (dispatch) {
+        dispatch({ type: LOADING_APP_CONTENT, payload: true });
         return axios.get(`/countries/${code}`)
             .then(json => {
                 dispatch({ type: GTE_DETAIL_COUNTRY, payload: json.data });
+                dispatch({ type: LOADING_APP_CONTENT, payload: false });
             }, error => console.error(error))
     }
 }
@@ -57,9 +59,11 @@ export function sortCountries(filtByContinent, filtByTravel, ordAscDesc, ordBy) 
     url += `&tyOrder=${ordAscDesc}`;
     url += `&orderBy=${ordBy}`;
     return function (dispatch) {
+        dispatch({ type: LOADING_APP_CONTENT, payload: true });
         return axios.get(url)
             .then(json => {
                 dispatch({ type: SORT_COUNTRIES, payload: json.data });
+                dispatch({ type: LOADING_APP_CONTENT, payload: false });
             }, error => console.error(error));
     }
 }

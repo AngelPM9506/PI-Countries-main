@@ -39,6 +39,9 @@ class Home extends Component {
     setFilterValue(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
+    resetFilters = () => {
+        this.props.getCountries().then(() => this.changeMaximo());
+    }
     filterCountries() {
         let { filterContinet, filterTravel, orden, ordenBy } = this.state;
         this.setState({ filtred: true })
@@ -138,6 +141,7 @@ class Home extends Component {
                             </select>
                         </div>
                         <button onClick={() => this.filterCountries()}>Filtrar y ordenar</button>
+                        <button onClick={() => this.resetFilters()}>Resetear filtros</button>
                     </article>
                 </section>
                 <Pagination
