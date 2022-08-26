@@ -4,6 +4,7 @@ import {
     GET_COUNTRIES,
     GET_TRAVELS,
     GTE_DETAIL_COUNTRY,
+    LOADING_APP_CONTENT,
     SEARCH_BY_NAME,
     SORT_COUNTRIES
 } from '../actions/TypeActions';
@@ -14,7 +15,8 @@ const initState = {
     loadedTravels: [],
     detailCountry: {},
     codes: [],
-    nCountries: 0
+    nCountries: 0,
+    loadingCom: false
 }
 
 const reducer = (state = initState, action) => {
@@ -60,6 +62,11 @@ const reducer = (state = initState, action) => {
             return ({
                 ...state,
                 detailCountry: payload
+            })
+        case LOADING_APP_CONTENT:
+            return ({
+                ...state,
+                loadingCom: payload
             })
         default:
             return state

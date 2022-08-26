@@ -4,16 +4,20 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import axios from 'axios';
-import dotenv from 'dotenv';
+
 /**estilos universales */
 //import './scss/variables.scss';
 import './css/index.css';
+
 /**componenetes */
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import store from './store';
-/**configuracón env */
+
+/**variables de entorno */
+import dotenv from 'dotenv';
 dotenv.config();
+
 /**url default para axios */
 axios.defaults.baseURL = process.env.REACT_APP_API || 'http://127.0.0.1:3001';
 

@@ -1,9 +1,15 @@
+/**dependencias */
 import { Component } from "react";
 import { connect } from "react-redux";
+/**actions de redux */
 import { getCountries, getTrevels, getContinents, sortCountries } from "../../store/actions";
+/**componentes */
 import ItemCountry from "../ItemCountry/itemCountry";
 import Pagination from "../paginacion/paginacion";
-import  styles from './home.module.css';
+import Loading from "../loadingContent/loading";
+/**estilos  */
+import styles from './home.module.css';
+/**componente */
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -92,8 +98,8 @@ class Home extends Component {
     }
     render() {
         let { pagina, porPagina } = this.state;
-        let { loadedCountries } = this.props
-        let {home, campo, countries, encabezado, filtros} = styles;
+        let { loadedCountries, loadingCom } = this.props
+        let { home, campo, countries, encabezado, filtros } = styles;
         return (
             <main className={"contenedor " + home}>
                 <section className={encabezado}>
@@ -145,6 +151,7 @@ class Home extends Component {
                     changeMaximo={this.changeMaximo}
                 />
                 <section className={countries}>
+                    {loadingCom && <Loading />}
                     {loadedCountries && loadedCountries.slice((pagina - 1) * porPagina, (pagina - 1) * porPagina + porPagina).map((country, i) => {
                         return (
                             <ItemCountry
@@ -156,7 +163,6 @@ class Home extends Component {
                             />
                         )
                     })}
-
                     {this.state.filtred && loadedCountries.length === 0 ? <h4 className="alerta rojo">No se encontro Ningun pais con tal conbinacion de filtros</h4> : ''}
                 </section>
             </main>
@@ -169,7 +175,8 @@ const mapState = state => {
         loadedCountries: state.loadedCountries,
         loadedTravels: state.loadedTravels,
         continents: state.continents,
-        nCountries: state.nCountries
+        nCountries: state.nCountries,
+        loadingCom: state.loadingCom
     }
 }
 

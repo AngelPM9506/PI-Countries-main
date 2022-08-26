@@ -6,17 +6,20 @@ import {
     GTE_DETAIL_COUNTRY,
     SORT_COUNTRIES,
     SEARCH_BY_NAME,
-    CLEAR_DETAILS
+    CLEAR_DETAILS,
+    LOADING_APP_CONTENT
 } from './TypeActions';
 
 //const hostpet = 'http://192.168.0.7:3001';
 
 export function getCountries() {
     return function (dispatch) {
+        dispatch({ type: LOADING_APP_CONTENT, payload: true });
         return axios.get('/countries')
             .then(json => {
                 dispatch({ type: GET_COUNTRIES, payload: json.data });
-            })
+                dispatch({ type: LOADING_APP_CONTENT, payload: false })
+            }, error => console.error(error))
     }
 }
 
@@ -34,7 +37,7 @@ export function getDetailsCountry(code) {
         return axios.get(`/countries/${code}`)
             .then(json => {
                 dispatch({ type: GTE_DETAIL_COUNTRY, payload: json.data });
-            })
+            }, error => console.error(error))
     }
 }
 
@@ -43,7 +46,7 @@ export function getContinents() {
         return axios.get('/countries/continents')
             .then(json => {
                 dispatch({ type: GET_CONTINENTS, payload: json.data });
-            });
+            }, error => console.error(error));
     }
 }
 
@@ -57,7 +60,7 @@ export function sortCountries(filtByContinent, filtByTravel, ordAscDesc, ordBy) 
         return axios.get(url)
             .then(json => {
                 dispatch({ type: SORT_COUNTRIES, payload: json.data });
-            });
+            }, error => console.error(error));
     }
 }
 
@@ -73,6 +76,10 @@ export function searchByName(name) {
 
 export function clearDetails() {
     return ({ type: CLEAR_DETAILS, payload: {} })
+}
+
+export function loadingAppContent(stateLoad) {
+    return ({ type: LOADING_APP_CONTENT, payload: stateLoad });
 }
 
 // export function getCodes(){

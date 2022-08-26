@@ -425,12 +425,7 @@ Tipografia por defecto
 ================================================================================
 */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
   font-family: "Libre Baskerville", serif;
   margin: 0 0 calc(4rem / 2) 0;
   color: #ffffff;

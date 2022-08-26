@@ -9,7 +9,7 @@ import newTravel from './newTravel/newTravel';
 function App() {
   return (
     <Fragment>
-    <Route exact path="/" component={Landing} />
+      <Route exact path="/" component={Landing} />
       <Route path="/countries" component={NavBar} />
       <Route exact path="/countries" component={Home} />
       <Route exact path="/countries/:code/:continenete" component={Country} />
