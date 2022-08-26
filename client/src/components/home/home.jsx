@@ -156,7 +156,7 @@ class Home extends Component {
                 />
                 <section className={countries}>
                     {loadingCom && <Loading />}
-                    {loadedCountries && loadedCountries.slice((pagina - 1) * porPagina, (pagina - 1) * porPagina + porPagina).map((country, i) => {
+                    {!loadingCom && loadedCountries && loadedCountries.slice((pagina - 1) * porPagina, (pagina - 1) * porPagina + porPagina).map((country, i) => {
                         return (
                             <ItemCountry
                                 key={i}
