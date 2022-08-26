@@ -167,7 +167,7 @@ class Home extends Component {
                             />
                         )
                     })}
-                    {this.state.filtred && loadedCountries.length === 0 ? <h4 className="alerta rojo">No se encontro Ningun pais con tal conbinacion de filtros</h4> : ''}
+                    {!loadingCom && this.state.filtred && loadedCountries.length === 0 ? <h4 className="alerta rojo">No se encontro Ningun pais con tal conbinacion de filtros</h4> : ''}
                 </section>
             </main>
         )
