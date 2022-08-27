@@ -40,7 +40,10 @@ class Home extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
     resetFilters = () => {
-        this.props.getCountries().then(() => this.changeMaximo());
+        this.props.getCountries().then(() => {
+            this.changeMaximo();
+            this.retunFirstPage();
+        });
     }
     filterCountries() {
         let { filterContinet, filterTravel, orden, ordenBy } = this.state;
