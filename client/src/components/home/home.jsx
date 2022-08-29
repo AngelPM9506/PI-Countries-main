@@ -79,7 +79,12 @@ class Home extends Component {
         this.setState({ pagina: this.state.pagina - 1 }, () => this.changePorPagina());
     }
     toPage = (event) => {
-        this.setState({ goPage: event.target.value });
+        let page = parseInt(event.target.value);
+        if (!isNaN(page)) {
+            this.setState({ goPage: page });
+        } else {
+            this.setState({ goPage: 1 });
+        }
     }
     goPage = (e) => {
         e.preventDefault();

@@ -16,11 +16,12 @@ class Buscador extends Component {
     search = (event) => {
         event.preventDefault();
         this.props.searchByName(this.state.toSearch)
-            .then( resp => {
+            .then(resp => {
                 if (resp.status === 200) {
                     this.props.retunFirstPage()
                     this.props.changeMaximo();
-                }else{
+                    this.setState({ toSearch: '' })
+                } else {
                     alert(resp.data.message)
                 }
             });
@@ -28,7 +29,11 @@ class Buscador extends Component {
     render() {
         return (
             <form className={styles.buscador} onSubmit={this.search}>
-                <input type="text" name="search" id="buscar"
+                <input
+                    type="text"
+                    name="search"
+                    id="buscar"
+                    value={this.state.toSearch}
                     onChange={this.inputSearch}
                     placeholder="Busca un pais" />
                 <input type="submit" value="Buscar" />

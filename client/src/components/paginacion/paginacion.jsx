@@ -7,8 +7,16 @@ class Pagination extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            input: 1
+            input: ""
         }
+    }
+    sendPage = event => {
+        this.props.goPage(event);
+        this.setState({ input: '' })
+    }
+    captInput = event => {
+        this.props.toPage(event)
+        this.setState({ input: event.target.value })
     }
     render() {
         let { paginacion, numerador, formulario, arrowContent, arrow, arrowFixed } = styles;
@@ -23,13 +31,14 @@ class Pagination extends Component {
                         </g>
                     </svg>
                 </div>
-                <form onSubmit={this.props.goPage} className={formulario}>
+                <form onSubmit={this.sendPage} className={formulario}>
                     <input
                         type="text"
                         name="pagina"
                         id="pagina"
                         autoComplete="off"
-                        onChange={this.props.toPage}
+                        value={this.state.input}
+                        onChange={this.captInput}
                     />
                     <input type="submit" value="Ir" />
                 </form>

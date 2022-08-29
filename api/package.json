@@ -28,7 +28,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^8.2.1",
-    "supertest": "^6.0.1",
+    "supertest": "^6.2.4",
     "supertest-session": "^4.1.0"
   }
 }
