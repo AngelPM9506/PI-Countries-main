@@ -8,6 +8,7 @@ import {
     SEARCH_BY_NAME,
     CLEAR_DETAILS,
     LOADING_APP_CONTENT
+    //TRAVEL_MIN_3
 } from './TypeActions';
 
 //const hostpet = 'http://192.168.0.7:3001';
@@ -85,6 +86,17 @@ export function clearDetails() {
 export function loadingAppContent(stateLoad) {
     return ({ type: LOADING_APP_CONTENT, payload: stateLoad });
 }
+
+// export function travelMin3() {
+//     return function (dispatch) {
+//         dispatch({ type: LOADING_APP_CONTENT, payload: true });
+//         return axios.get('/countries/special-filt')
+//             .then(json => {
+//                 dispatch({ type: TRAVEL_MIN_3, payload: json.data });
+//                 dispatch({ type: LOADING_APP_CONTENT, payload: false });
+//             }, error => console.error(error));
+//     }
+// }
 
 // export function getCodes(){
 //     return({type: GET_CODES});

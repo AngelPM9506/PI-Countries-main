@@ -6,3 +6,4 @@ export const GET_CONTINENTS = 'GET_CONTINENTS';
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME';
 export const CLEAR_DETAILS = 'CLEAR_DETAILS';
 export const LOADING_APP_CONTENT = 'LOADING_APP_CONTENT';
+// export const TRAVEL_MIN_3 = "TRAVEL_MIN_3";

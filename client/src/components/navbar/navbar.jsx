@@ -11,7 +11,7 @@ class NavBar extends Component {
     componentDidMount() {
     }
     render() {
-        let{log, nav, btn} = styles
+        let{log, nav, btn, amarillo, azul} = styles
         return (
             <header>
                 <div className={log}>
@@ -24,7 +24,9 @@ class NavBar extends Component {
                 </div>
                 <div className={nav}>
                     <nav>
-                        <NavLink className={btn} to="/countries/nueva-actividad">Nueva Actividad Turistica</NavLink>
+                        <NavLink className={`${btn} ${azul}`} to="/countries">Inicio</NavLink>
+                        <NavLink className={btn} to="/countries/nueva-actividad">Nueva Actividad</NavLink>
+                        <NavLink className={`${btn} ${amarillo}`} to="/countries/about">Acerca de...</NavLink>
                     </nav>
                 </div>
             </header>

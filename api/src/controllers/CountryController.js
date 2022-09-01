@@ -64,6 +64,20 @@ const CountryController = {
             res.json({ error: error.message });
         }
     }
+    // ,
+    // filtmin3: async (req, res) => {
+    //     let condicion = {
+    //         include: {
+    //             model: Travel, where: { dificultad: { [Op.lte]: 3 } }
+    //         }
+    //     }
+    //     try {
+    //         let resp = await Country.findAll(condicion);
+    //         res.status(200).json(resp);
+    //     } catch (error) {
+    //         res.json({ error: error.message });
+    //     }
+    // }
 }
 
 module.exports = CountryController;

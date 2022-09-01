@@ -1,0 +1,77 @@
+.about {
+    margin: 2.5rem auto 0 auto;
+}
+
+.about h2 {
+    padding: 1rem 0 0 0;
+    margin: 0;
+    width: max-content;
+    border-bottom: 0.5rem double #ffffff;
+}
+
+.datos {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 3rem;
+    padding: 3rem 0;
+}
+
+.resumen {
+    text-align: justify;
+}
+
+.resumen h3 {
+    font-size: 3rem;
+}
+
+.resumen p {
+    font-size: 1.75rem;
+}
+.resumen p a {
+    color: #ff0;
+    text-decoration: underline;
+}
+.contacto {
+    height: max-content;
+    text-align: center;
+    border-left: 0.2rem solid rgba(255, 255, 255, 0.2);
+}
+
+.contacto p {
+    padding: 2rem 0 2rem 1rem;
+}
+
+.repo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.repo a {
+    height: 5rem;
+    width: 5rem;
+}
+.repo a svg {
+    height: 100%;
+    width: 100%;
+    fill: #fff;
+}
+.item {
+    padding: 1.5rem;
+}
+.item p {
+    margin: 0;
+    padding: 0;
+}
+.item span {
+    color: rgb(82, 116, 153);
+    font-size: 2.25rem;
+    font-weight: bold;
+}
+
+.iconos a svg {
+    height: 2.5rem;
+    width: 2.5rem;
+    fill: #ff0;
+    margin: 0 1rem;
+}

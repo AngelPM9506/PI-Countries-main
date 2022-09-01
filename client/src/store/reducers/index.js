@@ -7,6 +7,7 @@ import {
     LOADING_APP_CONTENT,
     SEARCH_BY_NAME,
     SORT_COUNTRIES
+    //TRAVEL_MIN_3
 } from '../actions/TypeActions';
 
 const initState = {
@@ -68,6 +69,12 @@ const reducer = (state = initState, action) => {
                 ...state,
                 loadingCom: payload
             })
+        // case TRAVEL_MIN_3:
+        //     return ({
+        //         ...state,
+        //         loadedCountries: payload,
+        //         nCountries: payload.length
+        //     })
         default:
             return state
     }

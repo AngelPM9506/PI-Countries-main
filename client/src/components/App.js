@@ -5,6 +5,7 @@ import Landing from './landing/landing ';
 import NavBar from './navbar/navbar';
 import Country from './country/country.jsx';
 import newTravel from './newTravel/newTravel';
+import About from './about/about';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route exact path="/countries" component={Home} />
       <Route exact path="/countries/:code/:continenete" component={Country} />
       <Route exact path="/countries/nueva-actividad/" component={newTravel} />
+      <Route exact path="/countries/about/" component={About} />
     </Fragment>
   );
 }

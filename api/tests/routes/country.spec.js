@@ -1,9 +1,11 @@
 const { expect } = require('chai');
-const app = require('../../src/app');
 const session = require('supertest-session');
+const app = require('../../src/app');
 const { conn, Country } = require('../../src/db');
 const { findCountries } = require('../../src/functios');
 
+
+//const agent = require('supertest-session')(require('../../src/app'));
 const agent = session(app);
 
 // const dataCountry = {
@@ -42,9 +44,24 @@ describe('Countries Routes', () => {
       });
   });
 
+  describe('GET / , pruebua', () => {
+
+    it('Obtener estatus 200', async () => 
+       agent.get('/').expect(function (resp) {
+        console.log(resp.body);
+        expect(resp.statusCode).to.equal(200);
+      })
+    );
+  });
+  
   describe('GET /countries', () => {
 
-    it('Obtener estatus 200', async () => await agent.get('/countries').expect(200));
+    it('Obtener estatus 200', async () => 
+       agent.get('/countries').expect(function (resp) {
+        console.log(resp.body);
+        expect(resp.statusCode).to.equal(200);
+      })
+    );
 
   });
 

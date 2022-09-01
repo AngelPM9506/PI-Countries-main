@@ -107,6 +107,9 @@ class Home extends Component {
         }
         this.setState({ pagina: this.state.pagina + 1 }, () => this.changePorPagina());
     }
+    // specialFilt = () => {
+    //     this.props.travelMin3();
+    // }
     render() {
         let { pagina, porPagina } = this.state;
         let { loadedCountries, loadingCom } = this.props
@@ -150,6 +153,7 @@ class Home extends Component {
                         </div>
                         <button onClick={() => this.filterCountries()}>Filtrar y ordenar</button>
                         <button onClick={() => this.resetFilters()}>Resetear filtros</button>
+                        {/* <button onClick={() => this.specialFilt()} >{"Dificultad < 3"}</button> */}
                     </article>
                 </section>
                 <Pagination
@@ -198,6 +202,7 @@ const mapDispatch = dispatch => {
         getTrevels: () => dispatch(getTrevels()),
         getContinents: () => dispatch(getContinents()),
         sortCountries: (filtByContinent, filtByTravel, ordAscDesc, ordBy) => dispatch(sortCountries(filtByContinent, filtByTravel, ordAscDesc, ordBy))
+        //travelMin3: () => dispatch(travelMin3())
     }
 }
 
