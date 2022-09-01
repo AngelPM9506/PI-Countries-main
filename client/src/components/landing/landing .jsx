@@ -27,7 +27,7 @@ class Landing extends Component {
                     <p>M. Angel P.M. | Cohorte-28a SoyHenry</p>
                 </div>
                 <div className={botones}>
-                    <Link className={btn} to={'/countries'}>Ciudades</Link>
+                    <Link className={btn} to={'/countries'}>Países</Link>
                 </div>
             </main>
         )
