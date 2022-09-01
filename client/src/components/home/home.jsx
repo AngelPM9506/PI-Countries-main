@@ -147,7 +147,7 @@ class Home extends Component {
                         </div>
                         <div className={campo}>
                             <select name="ordenBy" id="ordenBy" onChange={e => this.setFilterValue(e)}>
-                                <option value='name'>Alfavetico</option>
+                                <option value='name'>Alfabetico</option>
                                 <option value='poblacion'>Poblacion</option>
                             </select>
                         </div>
