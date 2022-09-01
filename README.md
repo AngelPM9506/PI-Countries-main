@@ -1,7 +1,7 @@
 # Individual Project - Countries
 
 <p align="center">
-  <img height="200" src="./countries.png" />
+  <img height="200" src="./client/src/img/bg_Countries.jpg" />
 </p>
 
 ## Objetivos del Proyecto
